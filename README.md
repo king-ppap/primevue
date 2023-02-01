@@ -1,4 +1,82 @@
 
+## Customized Components
+
+What I did to the original PrimeVue
+
+1. Calendar
+   - [`feature/calendar`] Disable year and month when set `minDate` or `maxDate`
+
+## Startup
+
+1. Install package **(Only use `npm` to install)**
+
+    ```bash
+    npm i
+    ```
+
+2. Start project
+
+    ```bash
+    npm run dev
+    ```
+
+## How to publish to our private NPM
+
+1. Format doc with Prettier
+
+   ```bash
+   npm run format
+   ```
+
+2. Change version in `package-build.json` file (optional)
+3. Test && Build package
+
+    ```bash
+    npm run build:lib
+    ```
+
+    When test is pass press `q` and let it build
+
+4. Change directory to output directory
+
+    ```bash
+    cd dist
+    ```
+
+5. Publish to our private Gitlab
+
+   ```bash
+   npm publish primevue --registry http://xxx
+   ```
+
+    **DO NOT Publish to Public NPM or even change its name and publish to the public**
+
+## How to test before pubish
+
+You can use [Verdaccio](https://github.com/verdaccio/verdaccio#publishing) to run local private NPM
+
+Use Docker
+
+1. Run Verdaccio
+
+    ```bash
+    docker run -it --rm --name verdaccio -p 4873:4873 verdaccio/verdaccio
+    ```
+
+2. Publish to Verdaccio
+
+    ```bash
+    npm publish --registry http://localhost:4873
+    ```
+
+3. Install to test project
+
+    ```bash
+    NPM_CONFIG_REGISTRY=http://localhost:4873 npm i primevue
+    ```
+
+---
+
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![npm version](https://badge.fury.io/js/primevue.svg)](https://badge.fury.io/js/primevue)
 [![Discord Chat](https://img.shields.io/discord/557940238991753223.svg?color=7289da&label=chat&logo=discord)](https://discord.gg/gzKFYnpmCY)
